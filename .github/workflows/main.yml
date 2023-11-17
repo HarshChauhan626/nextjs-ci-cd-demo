@@ -1,21 +1,24 @@
-# .github/workflows/main.yml
 name: CI
+
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
   workflow_dispatch:
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v2  # Updated to setup-node@v2
         with:
-          node-version: '12.x'
+          node-version: '18'  # Updated Node.js version to 18.x
       - name: Install NPM dependencies
         run: npm install
+      - name: Build Next.js app
+        run: npm run build  # Added npm run build step
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
