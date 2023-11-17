@@ -12,13 +12,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - uses: actions/setup-node@v2  # Updated to setup-node@v2
+      - name: Change to project directory
+        run: cd redux-tutorial
+      - uses: actions/setup-node@v2
         with:
-          node-version: '18'  # Updated Node.js version to 18.x
+          node-version: '18'
       - name: Install NPM dependencies
         run: npm install
       - name: Build Next.js app
-        run: npm run build  # Added npm run build step
+        run: npm run build
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
