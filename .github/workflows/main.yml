@@ -16,7 +16,7 @@ jobs:
         run: cd redux-tutorial
       - uses: actions/setup-node@v2
         with:
-          node-version: '18'
+          node-version: '18.x'
       - name: Install NPM dependencies
         run: npm install
       - name: Build Next.js app
