@@ -16,6 +16,9 @@ nvm alias default 18.18.2
 # Install the latest version of npm
 npm install -g npm@latest
 
+# Install pm2 globally
+npm install -g pm2
+
 # Display Node.js and npm versions
 node -v
 npm -v
