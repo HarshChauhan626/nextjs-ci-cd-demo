@@ -1,20 +1,10 @@
 #!/bin/bash
 
-# Step 1: Create a Bash script
-echo '#!/bin/bash
+# Step 1: Make your script executable
+chmod +x /path/to/myscript.sh
 
-chmod +x /my-app/project_deploy.sh
-
-# Step 2: Create a systemd service unit
-echo '[Unit]
-Description=My Startup Script
-
-[Service]
-ExecStart=/my-app/project_deploy.sh
-
-[Install]
-WantedBy=default.target
-' > /etc/systemd/system/myscript.service
+# Step 2: Copy myscript.service to /etc/systemd/system/
+cp /path/to/myscript.service /etc/systemd/system/
 
 # Step 3: Reload systemd
 systemctl daemon-reload
