@@ -26,7 +26,6 @@ jobs:
       - name: Copy code to EC2
         run: rsync -e "ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa" -r --exclude='.git/' --exclude='.github/' --exclude='node_modules/' * ubuntu@3.144.162.231:~/my-app/
 
-      - name: Check if Node.js is installed
+      - name: Check if Node.js is installed and run deploy.sh
         run: | 
-          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ubuntu@3.144.162.231 'command -v node || (cd ~/my-app/redux-tutorial && chmod +x node_install.sh && ./node_install.sh)'
-
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ubuntu@3.144.162.231 'command -v node || (cd ~/my-app/redux-tutorial && chmod +x node_install.sh && ./node_install.sh) && cd ~/my-app/redux-tutorial && chmod +x project_deploy.sh && ./project_deploy.sh'
