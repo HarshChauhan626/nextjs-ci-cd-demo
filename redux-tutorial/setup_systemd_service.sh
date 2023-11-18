@@ -3,18 +3,14 @@
 # Step 1: Create a Bash script
 echo '#!/bin/bash
 
-# Your startup commands here
-echo "Hello, this is my startup script!" > /tmp/startup_log.txt
-' > /path/to/myscript.sh
-
-chmod +x /path/to/myscript.sh
+chmod +x /my-app/project_deploy.sh
 
 # Step 2: Create a systemd service unit
 echo '[Unit]
 Description=My Startup Script
 
 [Service]
-ExecStart=/path/to/myscript.sh
+ExecStart=/my-app/project_deploy.sh
 
 [Install]
 WantedBy=default.target
