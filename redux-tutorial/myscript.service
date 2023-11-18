@@ -1,0 +1,8 @@
+[Unit]
+Description=My Startup Script
+
+[Service]
+ExecStart=/my-app/redux-tutorial/myscript.sh
+
+[Install]
+WantedBy=default.target
