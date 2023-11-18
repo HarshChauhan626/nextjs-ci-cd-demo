@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Step 1: Make your script executable
-chmod +x /path/to/myscript.sh
+chmod +x ./project_deploy.sh
 
 # Step 2: Copy myscript.service to /etc/systemd/system/
 cp /path/to/myscript.service /etc/systemd/system/
