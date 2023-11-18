@@ -23,5 +23,4 @@ jobs:
         run: ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ubuntu@3.144.162.231 'mkdir my-app'
 
       - name: Copy code to EC2
-        run: scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa -r ./ ubuntu@3.144.162.231:~/my-app/
-      
+        run: scp -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa -r ./.* * ubuntu@3.144.162.231:~/my-app/
