@@ -1,38 +1,20 @@
-name: CI
+name: SSH Deploy
 
 on:
   push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
-
-  workflow_dispatch:
+    branches:
+      - main
 
 jobs:
-  build:
-
+  deploy:
     runs-on: ubuntu-latest
 
-    if: github.ref == 'refs/heads/master'
-
-    strategy:
-      matrix:
-        node-version: [18.x]
-
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-      - run: cd redux-tutorial
-      - run: npm ci
-      - run: npm run build
-      - run: npm run test
+      - name: Install SSH key
+        run: echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa && chmod 600 ~/.ssh/id_rsa
 
-      - name: rsync deployments
-        uses: burnett01/rsync-deployments@5.1
-        with:
-          switches: -avzr --delete
-          path: ./*
-          remote_path: /var/www/my-app/
-          remote_host: ec2-3-144-162-231.us-east-2.compute.amazonaws.com
-          remote_user: ubuntu
-          remote_key: "${{ secrets.SSH_PRIVATE_KEY }}"
+      - name: Create directory on EC2
+        run: ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ubuntu@your-ec2-ip 'mkdir -p /path/to/your/directory'
