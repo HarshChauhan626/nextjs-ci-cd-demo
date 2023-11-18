@@ -28,4 +28,4 @@ jobs:
 
       - name: Check if Node.js is installed
         run: |
-          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ubuntu@3.144.162.231 'command -v node || ./my-app/node_install.sh'
+          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ubuntu@3.144.162.231 'command -v node || ./my-app/redux-tutorial/node_install.sh'
