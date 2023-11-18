@@ -20,4 +20,4 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
 
       - name: Create directory on EC2
-        run: ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ubuntu@3.144.162.231 'mkdir -p /path/to/your/directory'
+        run: ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa ubuntu@3.144.162.231 'mkdir my-app'
